@@ -68,6 +68,10 @@ public abstract class DataUtilities {
         double total = 0.0;
         int rowCount = data.getRowCount();
         for (int r = 0; r < rowCount; r++) {
+        	
+        	if(column < 0 || column >= data.getColumnCount())
+        		return 0;
+        	
             Number n = data.getValue(r, column);
             if (n != null) {
                 total += n.doubleValue();   
@@ -91,6 +95,10 @@ public abstract class DataUtilities {
         double total = 0.0;
         int columnCount = data.getColumnCount();
         for (int c = 0; c < columnCount; c++) {
+        	
+        	if(row < 0 || row >= data.getRowCount())
+        		return 0;
+        	
             Number n = data.getValue(row, c);
             if (n != null) {
                 total += n.doubleValue();   
