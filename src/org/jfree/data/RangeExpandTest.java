@@ -56,7 +56,7 @@ public class RangeExpandTest {
 		double lowerMargin = -0.25; 
 		double upperMargin = -0.5;
 		Range actual = Range.expand(range, lowerMargin, upperMargin); 
-		Range expected = new Range(3,7);
+		Range expected = new Range(3,4);
 		assertEquals("NegativePercentagesMarginTest",expected, actual);
 	}
 	
