@@ -75,7 +75,7 @@ public class Range_Shift_ZeroCrossingOption {
 		assertEquals("Testing that the bounds are properly shifted from negative to positive when no zero crossing", expected, range);
 	}
 	
-	@Test (timeout = 1000)
+	//@Test (timeout = 1000)
 	public void Shift_PositiveBounds_To_NegativeBounds_Without_ZC_Test() {
 		range = new Range(1,2);
 		range = Range.shift(range, -2, false);

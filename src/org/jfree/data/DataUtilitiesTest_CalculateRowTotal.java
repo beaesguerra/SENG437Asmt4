@@ -42,6 +42,9 @@ public class DataUtilitiesTest_CalculateRowTotal {
 				will(returnValue(7.5));
 				one(values).getValue(0, 1);
 				will(returnValue(2.5));
+				
+				allowing(values).getRowCount();
+				will(returnValue(1));
 			}
 		});
 		// exercise
@@ -66,12 +69,15 @@ public class DataUtilitiesTest_CalculateRowTotal {
 				will(returnValue(-7.5));
 				one(values).getValue(0, 1);
 				will(returnValue(2.5));
+				
+				allowing(values).getRowCount();
+				will(returnValue(1));
 			}
 		});
 		// exercise
 		double result = DataUtilities.calculateRowTotal(values, 0);
 		// verify
-		assertEquals("return value", -5.5, result, .000000001d);
+		assertEquals("return value", -5.0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
 	

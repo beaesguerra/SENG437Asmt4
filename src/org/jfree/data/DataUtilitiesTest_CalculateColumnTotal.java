@@ -44,6 +44,9 @@ public class DataUtilitiesTest_CalculateColumnTotal {
 				will(returnValue(7.5));
 				one(values).getValue(1, 0);
 				will(returnValue(2.5));
+				
+				allowing(values).getColumnCount();
+				will(returnValue(1));
 			}
 		});
 		// exercise
@@ -67,6 +70,10 @@ public class DataUtilitiesTest_CalculateColumnTotal {
 				will(returnValue(-2.5));
 				one(values).getValue(1, 0);
 				will(returnValue(1.5));
+				
+				allowing(values).getColumnCount();
+				will(returnValue(1));
+				
 			}
 		});
 		// exercise
