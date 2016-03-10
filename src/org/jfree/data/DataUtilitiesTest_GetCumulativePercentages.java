@@ -133,5 +133,34 @@ public class DataUtilitiesTest_GetCumulativePercentages {
 		DataUtilities.getCumulativePercentages(null);
 	}
 	
+	@Test (timeout = 1000)
+	public void getCumulativePercentagesKeysHaveNullValues() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				allowing(keyvalues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyvalues).getValue(0);
+				will(returnValue(null));
+				allowing(keyvalues).getValue(1);
+				will(returnValue(null));
+				allowing(keyvalues).getValue(2);
+				will(returnValue(null));
+				
+				allowing(keyvalues).getKey(0);
+				will(returnValue(0));
+				allowing(keyvalues).getKey(1);
+				will(returnValue(1));
+				allowing(keyvalues).getKey(2);
+				will(returnValue(2));
+				
+			}
+		});
+		
+		KeyedValues result = DataUtilities.getCumulativePercentages(keyvalues);
+		assertEquals("Key 0 value", Double.NaN, (double)result.getValue(0), 0.000000001d);
+		assertEquals("Key 2 value", Double.NaN, (double)result.getValue(2), 0.000000001d);
+	}
 	
 }

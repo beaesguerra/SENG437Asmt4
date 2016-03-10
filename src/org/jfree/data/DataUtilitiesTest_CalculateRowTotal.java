@@ -179,4 +179,49 @@ public class DataUtilitiesTest_CalculateRowTotal {
 		// tear-down: NONE in this test method
 	}
 	
+	@Test (timeout = 1000)
+	public void calculateColumnTotalForZeroRows() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				one(values).getRowCount();
+				will(returnValue(0));
+	
+				
+				allowing(values).getColumnCount();
+				will(returnValue(2));
+				
+			}
+		});
+		// exercise
+		double result = DataUtilities.calculateRowTotal(values, 0);
+		// verify
+		assertEquals(0.0, result, .000000001d);
+		// tear-down: NONE in this test method
+	}
+	
+	@Test (timeout = 1000)
+	public void calculateColumnTotalForNullValues() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				allowing(values).getRowCount();
+				will(returnValue(1));
+				
+				allowing(values).getColumnCount();
+				will(returnValue(2));
+				
+				allowing(values).getValue(0, 0);
+				will(returnValue(null));
+				allowing(values).getValue(0, 1);
+				will(returnValue(null));
+			}
+		});
+		// exercise
+		double result = DataUtilities.calculateRowTotal(values, 0);
+		// verify
+		assertEquals(0.0, result, .000000001d);
+		// tear-down: NONE in this test method
+	}
+	
 }
